@@ -37,9 +37,8 @@ namespace NASA_API
 
                     byte[] imageData = await DowloadImage(apodResponse.hdurl);
 
-                    string savePath = Path.Combine(Environment
-                        .GetFolderPath(Environment.SpecialFolder.Desktop),
-                        "images/NasaImages/nasa_image.jpg");
+                    string savePath = Path.Combine(Environment.CurrentDirectory,
+                        "Images/nasa_image.jpg");
                     File.WriteAllBytes(savePath, imageData);
                     Console.WriteLine($"Изображение сохранено: {savePath}");
 
