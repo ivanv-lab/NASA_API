@@ -21,6 +21,10 @@ namespace NASA_API
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                Console.ReadLine();
+            }
 
             async Task ProcesImage(string date)
             {
@@ -39,6 +43,9 @@ namespace NASA_API
 
                     string savePath = Path.Combine(Environment.CurrentDirectory,
                         "Images/nasa_image.jpg");
+                    if(!Directory.Exists(
+                        Path.Combine(Environment.CurrentDirectory,"Images")))
+                        Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Images"));
                     File.WriteAllBytes(savePath, imageData);
                     Console.WriteLine($"Изображение сохранено: {savePath}");
 
